@@ -1,2 +1,0 @@
-slices = 20
-other data = 50
