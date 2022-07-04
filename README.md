@@ -3,8 +3,8 @@ This is version 2.0 of the thermal model as developed for a centrifugally
 confined fusion reactor by the Thermal Subteam of FUSE. This is an academic 
 software to be used only as distributed by FUSE. 
 
-Primary Developer(s): Erik Mechtel
-Frontend Developer(s): Yuca Chen
+Primary Developer: Erik Mechtel
+QA Team: Yuca Chen
 Copyright 2022 by Yuca Chen, Erik Mechtel
 
 Instructions:
