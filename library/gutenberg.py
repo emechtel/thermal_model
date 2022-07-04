@@ -11,20 +11,17 @@ NOT like coordinates in xyz space
 
 def prose():
     import os
+    import numpy as np
     os.chdir(os.path.dirname(__file__))
-    os.chdir(os.path.dirname(os.getcwd()))
-    with open('librarian.txt') as callnumber:
-        stories = callnumber.read().replace('\n',' ')
-    callnumber.close()
-    lines = stories[9:11]
-    meter = int(lines)
-    return meter
+    old = np.loadtxt("catalog.csv")
+    xold, yold, zold, slicesold = int(old[0]), int(old[1]), int(old[2]), int(old[3])
+    return xold, yold, zold, slicesold
 
 def collate():
     import os
     import numpy as np
     #from scipy import io 
-    num = prose()
+    ex,why,zee,es = prose()
     row = str(os.path.dirname(__file__) + '\\nonfiction')
     try:
         os.chdir(row)
@@ -38,14 +35,14 @@ def collate():
         os.chdir(row)
         print("Repository cleared")
     finally:
-        dewey = np.zeros((num,num))
-        for z in range(num):
-            for x in range (num):
-                for y in range (num):
+        dewey = np.zeros((ex,why))
+        for z in range(zee):
+            for x in range (ex):
+                for y in range (why):
                     dewey[x][y] = np.float32(((x+0.5)**2+(y+0.5)**2+(z+0.5)**2)**(0.5))
             print(str(z/num*100)+'%')
             # io.savemat('distancesz%s.mat' % str(z+1),{"unfiltereddistances": q})
-            np.savetxt('shelf_no%s.csv' % str(z+1), dewey, delimiter=',',)
+            np.savetxt('shelf_no%s.csv' % str(z+1), dewey, delimiter=',')
             del dewey
             dewey = np.zeros((num,num))
         print('100%')
