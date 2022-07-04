@@ -15,9 +15,9 @@ import os
 import numpy as np
 #from scipy import io 
 
-row = str(os.path.dirname(__file__) + '\library')
+row = str(os.path.dirname(__file__) + '\nonfiction')
 try:
-    os.chdir(shelf)
+    os.chdir(row)
     for f in os.listdir(row):
         os.remove(os.path.join(row, f))
     print("Repository cleared")
@@ -32,10 +32,10 @@ finally:
     for z in range(num):
         for x in range (num):
             for y in range (num):
-                dewey[x][y] = (x+1)**2+(y+1)**2+(z+1)**2
+                dewey[x][y] = ((x+0.5)**2+(y+0.5)**2+(z+0.5)**2)**(0.5)
         print(str(z/num*100)+'%')
         # io.savemat('distancesz%s.mat' % str(z+1),{"unfiltereddistances": q})
-        np.savetxt('z_axis_slice_no%s.csv' % str(z+1), dewey, delimiter=',',)
+        np.savetxt('shelf_no%s.csv' % str(z+1), dewey, delimiter=',',)
         del dewey
         dewey = np.zeros((num,num))
     print('100%')
