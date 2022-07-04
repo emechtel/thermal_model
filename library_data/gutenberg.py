@@ -15,7 +15,7 @@ import os
 import numpy as np
 #from scipy import io 
 
-row = str(os.path.dirname(__file__) + '\nonfiction')
+row = str(os.path.dirname(__file__) + '\\nonfiction')
 try:
     os.chdir(row)
     for f in os.listdir(row):
