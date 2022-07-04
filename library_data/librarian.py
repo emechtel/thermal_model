@@ -7,32 +7,38 @@ each box represents the distance to the upper left corner of box (1,1,1)
 they are to be treated as matrices
 NOT like coordinates in xyz space
 '''
-# NOTE this script is not commented, rather the commetned text represents old commands kept for posterity
+#NOTE this script is not commented, rather the commetned text represents old commands kept for posterity
+
+num = 5
 
 import os
 import numpy as np
 #from scipy import io 
 
-lib = str(os.path.dirname(__file__) + '\library')
-os.chdir(lib)
-for f in os.listdir(lib):
-    os.remove(os.path.join(lib, f))
-print("Library cleared")
-
-num = 5
-
-q = np.zeros((num,num))
-for z in range(num):
-    for x in range (num):
-        for y in range (num):
-            q[x][y] = (x+1)**2+(y+1)**2+(z+1)**2
-    print(str(z/num*100)+'%')
-    # io.savemat('distancesz%s.mat' % str(z+1),{"unfiltereddistances": q})
-    np.savetxt('distancesz%s.csv' % str(z+1), q, delimiter=',',)
-    del q
-    q = np.zeros((num,num))
-    
-print('100%')
-#q.astype(np.uint32).tofile('test.bin') #for more compact data sets, set uint[integer] to best value
-#io.savemat('distances.mat',{"unfiltereddistances": q})
-print('Done')
+shelf = str(os.path.dirname(__file__) + '\library')
+try:
+    os.chdir(shelf)
+    for f in os.listdir(shelf):
+        os.remove(os.path.join(lib, f))
+    print("Repository cleared")
+except:
+    lib = os.path.dirname(__file__)
+    os.chdir(lib)
+    os.makedirs(shelf)
+    os.chdir(shelf)
+    print("Repository cleared")
+finally:
+    dewey = np.zeros((num,num))
+    for z in range(num):
+        for x in range (num):
+            for y in range (num):
+                dewey[x][y] = (x+1)**2+(y+1)**2+(z+1)**2
+        print(str(z/num*100)+'%')
+        # io.savemat('distancesz%s.mat' % str(z+1),{"unfiltereddistances": q})
+        np.savetxt('z_axis_slice_no%s.csv' % str(z+1), dewey, delimiter=',',)
+        del dewey
+        dewey = np.zeros((num,num))
+    print('100%')
+    #q.astype(np.uint32).tofile('test.bin') #for more compact data sets, set uint[integer] to best value
+    #io.savemat('distances.mat',{"unfiltereddistances": q})
+    print('Done')
