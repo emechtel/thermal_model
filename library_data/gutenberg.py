@@ -15,17 +15,17 @@ import os
 import numpy as np
 #from scipy import io 
 
-shelf = str(os.path.dirname(__file__) + '\library')
+row = str(os.path.dirname(__file__) + '\library')
 try:
     os.chdir(shelf)
-    for f in os.listdir(shelf):
-        os.remove(os.path.join(lib, f))
+    for f in os.listdir(row):
+        os.remove(os.path.join(row, f))
     print("Repository cleared")
 except:
     lib = os.path.dirname(__file__)
     os.chdir(lib)
-    os.makedirs(shelf)
-    os.chdir(shelf)
+    os.makedirs(row)
+    os.chdir(row)
     print("Repository cleared")
 finally:
     dewey = np.zeros((num,num))
