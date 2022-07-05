@@ -28,4 +28,7 @@ try:
     booklet.show('Value Gradient')
     os.remove(str(os.path.dirname(__file__) + "\\book.jpeg"))
 except Exception as err:
-    print("\n\nSomething is wrong with you parameters, please try again.\nThe system reutrned the following error message:", err)
+    print("\nSomething is wrong with you parameters, please try again.\nThe system reutrned the following error message:")
+    print("")
+    print(err)
+    print("")
