@@ -40,11 +40,11 @@ def collate():
             for x in range (ex):
                 for y in range (why):
                     dewey[x][y] = np.float32(((x+0.5)**2+(y+0.5)**2+(z+0.5)**2)**(0.5))
-            print(str(z/num*100)+'%')
+            print(str(z/zee*100)+'%')
             # io.savemat('distancesz%s.mat' % str(z+1),{"unfiltereddistances": q})
             np.savetxt('shelf_no%s.csv' % str(z+1), dewey, delimiter=',')
             del dewey
-            dewey = np.zeros((num,num))
+            dewey = np.zeros((ex,why))
         print('100%')
         #q.astype(np.uint32).tofile('test.bin') #for more compact data sets, set uint[integer] to best value
         #io.savemat('distances.mat',{"unfiltereddistances": q})
